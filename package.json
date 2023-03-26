@@ -12,6 +12,8 @@
   "dependencies": {
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
+    "vue-audio": "^0.0.12",
+    "vue-image": "^1.0.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
