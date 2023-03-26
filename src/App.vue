@@ -1,27 +1,10 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import VueAudio from 'vue-audio'
-import VueImage from 'vue-image'
-
-export default {
-  components: {
-    VueAudio,
-    VueImage
-  },
-
-  data() {
-    return {
-      imageUrl: 'https://url-de-la-pochette-dalbum.jpg',
-      audioSources: [
-        { src: 'https://url-du-fichier-audio.mp3', type: 'audio/mpeg' }
-      ]
-    }
-  }
-}
 </script>
 
 <template>
+  <header>
+  </header>
 
   <RouterView />
 </template>
