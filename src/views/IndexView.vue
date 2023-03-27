@@ -1,7 +1,11 @@
 <template>
-<h1>Bravo !</h1>
+
 </template>
 
 <script>
+
+export default {
+  name: 'IndexView'
+}
 
 </script>
