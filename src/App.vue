@@ -1,12 +1,19 @@
 <script>
-import { RouterLink, RouterView } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import { RouterView } from 'vue-router'
+import router from './router'
+
+export default {
+  components: {
+    RouterView
+  },
+  router
+}
+
 </script>
 
 <template>
-  <header>
-  </header>
-
-  <RouterView />
+  <router-view />
 </template>
 
 <style scoped>

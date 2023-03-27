@@ -30,8 +30,9 @@ export default {
 
     const login = async () => {
       try {
-        if (state.email === 'user@example.com' && state.password === 'password') {
-          router.push('/classement')
+        if (state.email === 'tdelapierre@mediaonegroup.ch' && state.password === 'M07 D3 P4553') {
+          localStorage.setItem('isAuthenticated', 'true')
+          router.push('/index')
         } else {
           state.error = 'Adresse email ou mot de passe incorrect'
         }
