@@ -1,8 +1,15 @@
 <template>
   <footer class="d-flex flex-row justify-content-center align-items-center">
-    <p>Copyright © 2014-2022 Dyma</p>
+    <p>Test Technique Media One 2023 <i class="fa-light fa-hand-fingers-crossed"></i></p>
   </footer>
 </template>
+
+<script>
+
+export default {
+  name: 'TheFooter'
+}
+</script>
 
 <style lang="scss" scoped>
 footer {

@@ -10,7 +10,7 @@
       </div>
       <button @click.prevent="login">Se connecter</button>
     </form>
-    <p v-if="error">{{ error }}</p>
+    <div v-if="state.error" class="error">{{ state.error }}</div>
   </div>
 </template>
 
@@ -21,7 +21,6 @@ import { useRouter } from 'vue-router'
 export default {
   setup() {
     const router = useRouter()
-
     const state = reactive({
       email: '',
       password: '',
@@ -46,6 +45,6 @@ export default {
       state,
       login,
     }
-  },
-}
+  }
+};
 </script>

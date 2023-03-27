@@ -1,11 +1,11 @@
 <template>
   <header class="px-20 d-flex flex-row align-items-center">
-    <div class="logo">Mon logo</div>
+    <img class="logo" src="../assets/LOGO_2-WithoutBack.png" alt="Logo">
     <div class="search">
       <input type="text" placeholder="Rechercher...">
     </div>
     <div class="user">
-      <img src="avatar.png" alt="Avatar" @click="toggleDropdown">
+      <img class="user-image" src="../assets/AvatarTim.jpeg" alt="Avatar" @click="toggleDropdown">
       <div v-show="showDropdown" class="dropdown">
         <ul>
           <li><a href="#">Se déconnecter</a></li>
@@ -20,7 +20,7 @@ import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default {
-  name: 'Header',
+  name: 'TheHeader',
 
   setup() {
     const router = useRouter()
@@ -64,5 +64,18 @@ header {
       font-size: 20px;
     }
   }
+  .user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 }
 </style>
