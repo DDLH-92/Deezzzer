@@ -11,12 +11,14 @@
 
 import TheHeader from '../components/Header.vue'
 import TheFooter from '../components/Footer.vue'
+import MusicCard from '../components/MusicCard.vue'
 
 export default {
   name: 'DefaultLayout',
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
+    MusicCard
   }
 }
 </script>
@@ -27,7 +29,6 @@ export default {
   min-height: 100vh;
   display: grid;
   grid-template-areas: 'header header' 'shop cart' 'footer footer';
-  grid-template-columns: 75% 25%;
   grid-template-rows: 48px auto 48px;
 }
 .header {

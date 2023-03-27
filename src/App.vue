@@ -10,12 +10,14 @@ import { RouterView } from 'vue-router'
 import router from './router'
 import TheHeader from './components/Header.vue'
 import TheFooter from './components/Footer.vue'
+import MusicCard from './components/MusicCard.vue'
 
 export default {
   components: {
     RouterView,
     TheHeader,
-    TheFooter
+    TheFooter,
+    MusicCard
   },
   router
 }
