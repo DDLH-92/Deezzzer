@@ -1,5 +1,8 @@
 <template>
-  <h1 className="text-3xl font-bold underline">Hello world!</h1>
+  <div id="TopNav" class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[56px] border-b border-b-[#32323D]"
+  >
+
+</div>
   <component :is="this.$route.meta.layout || 'div'">
     <router-view />
   </component>
@@ -13,6 +16,7 @@ import TheHeader from './components/Header.vue'
 import TheFooter from './components/Footer.vue'
 import MusicCard from './components/MusicCard.vue'
 import { useQuery } from "@tanstack/vue-query",
+import Magnify from 'vue-material-design-icons/Magnify.vue';
 
 const { isPending, isFetching, isError, data, error } = useQuery({
   queryKey: ['todos'],

@@ -9,9 +9,9 @@
 
 <script>
 
-import TheHeader from '../components/Header.vue'
-import TheFooter from '../components/Footer.vue'
-import MusicCard from '../components/MusicCard.vue'
+// import TheHeader from '../components/Header.vue'
+// import TheFooter from '../components/Footer.vue'
+// import MusicCard from '../components/MusicCard.vue'
 
 export default {
   name: 'DefaultLayout',
