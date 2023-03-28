@@ -1,19 +1,3 @@
-<template>
-  <div>
-    <h1>Connexion</h1>
-    <form>
-      <div>
-        <input type="email" id="email" placeholder="Adresse e-mail" v-model="state.email" />
-      </div>
-      <div>
-        <input type="password" id="password" placeholder="Mot de passe" v-model="state.password" />
-      </div>
-      <button @click.prevent="login">Se connecter</button>
-    </form>
-    <div v-if="state.error" class="error">{{ state.error }}</div>
-  </div>
-</template>
-
 <script>
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
@@ -29,9 +13,9 @@ export default {
 
     const login = async () => {
       try {
-        if (state.email === 'tdelapierre@mediaonegroup.ch' && state.password === 'M07 D3 P4553') {
+        if (state.email === 'test' && state.password === 'test') {
           localStorage.setItem('isAuthenticated', 'true')
-          router.push('/index')
+          router.push('/')
         } else {
           state.error = 'Adresse email ou mot de passe incorrect'
         }
@@ -47,4 +31,24 @@ export default {
     }
   }
 };
-</script> -->
+</script>
+
+<template>
+  <div class="flex flex-col items-center justify-center h-screen">
+    <form class="flex flex-col items-center">
+      <div class="mb-4">
+        <input type="email" id="email" placeholder="Adresse e-mail" v-model="state.email" class="border border-gray-400 p-2 rounded-lg w-80 placeholder-black background-white" />
+      </div>
+      <div class="mb-6">
+        <input type="password" id="password" placeholder="Mot de passe" v-model="state.password" class="border border-gray-400 p-2 rounded-lg w-80 placeholder-black background-white" />
+      </div>
+      <button @click.prevent="login" class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-300 hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+        Se connecter
+      </button>
+    </form>
+    <div v-if="state.error" class="error mt-4">{{ state.error }}</div>
+  </div>
+</template>
+
+<!-- tdelapierre@mediaonegroup.ch
+M07 D3 P4553 -->
