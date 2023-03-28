@@ -26,7 +26,7 @@ export default {
     const router = useRouter()
 
     const state = reactive({
-      userImage: './assets/AvatarTim.jpeg',
+      userImage: '',
       showDropdown: false
     })
 
