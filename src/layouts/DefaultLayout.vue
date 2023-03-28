@@ -37,7 +37,6 @@ onBeforeMount(() => {
       <img class="rounded-full w-[33px]" src="/images/AvatarTim.jpeg" />
     </div>
   </div>
-
   <div
     id="SideNav"
     class="fixed w-[200px] bg-[#191922] h-[100vh] border-r border-r-[#32323D]"
