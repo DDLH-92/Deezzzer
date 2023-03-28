@@ -11,6 +11,12 @@ import router from './router'
 import TheHeader from './components/Header.vue'
 import TheFooter from './components/Footer.vue'
 import MusicCard from './components/MusicCard.vue'
+import { useQuery } from "@tanstack/vue-query",
+
+const { isPending, isFetching, isError, data, error } = useQuery({
+  queryKey: ['todos'],
+  queryFn: getTodos,
+})
 
 export default {
   components: {
