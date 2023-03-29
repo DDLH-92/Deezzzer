@@ -1,8 +1,28 @@
 <script setup>
+import axios from "axios";
+
 import MixesInspiredBy from "../components/MixesInspiredBy.vue";
 import MultiArtistSelect from "../components/MultiArtistSelect.vue";
 import CustomCarousel from "../components/CustomCarousel.vue";
 import Highlights from "../components/Highlights.vue";
+
+let topTracks = []
+// const response = await fetch('https://api.deezer.com/chart')
+// console.log(response)
+axios.get('https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart', {
+
+		mode: 'no-cors',
+    headers: { 'Access-Control-Allow-Origin' : 'Accept'},
+    credentials: "same-origin"
+    //headers: { 'Accept' : '*/*', 'Accept-Encoding':'gzip, deflate, br'}
+
+	}).then((response) => {
+		console.log('response',response.data.tracks.data);
+    topTracks = response.data.tracks.data
+
+	}).catch((e) => {
+		console.log('error',e);
+	});
 </script>
 
 <template>
@@ -18,80 +38,7 @@ import Highlights from "../components/Highlights.vue";
       <div class="mt-8 min-w-[800px]">
         <CustomCarousel
           category
-          :data="[
-            {
-              url: 'https://picsum.photos/id/134/300/300',
-              song: 'Foregone',
-              by: 'In Flames',
-              releasedOn: '10/02/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/144/300/300',
-              song: 'Dark Waters',
-              by: 'Delain',
-              releasedOn: '09/01/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/146/300/300',
-              song: 'Heritage',
-              by: 'Distant',
-              releasedOn: '10/01/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/78/300/300',
-              song: 'Meanwhile',
-              by: 'Klone',
-              releasedOn: '08/02/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/151/300/300',
-              song: 'Truth Decay',
-              by: 'You Me At Six',
-              releasedOn: '10/01/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/155/300/300',
-              song: 'This Is Why',
-              by: 'Paramore',
-              releasedOn: '10/02/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/167/300/300',
-              song: 'The Jaws Of Life',
-              by: 'Pierce The Veil',
-              releasedOn: '09/23/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/191/300/300',
-              song: 'The Future Is Your Past',
-              by: 'In The Brian Jonestown Massacre',
-              releasedOn: '07/25/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/194/300/300',
-              song: 'The Land, The Water, The Sky',
-              by: 'Black Belt Eagle Scout',
-              releasedOn: '09/22/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/177/300/300',
-              song: 'The Day My Father Died',
-              by: 'SYML',
-              releasedOn: '10/02/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/227/300/300',
-              song: 'Complete Mountain Almanac',
-              by: 'Complete Mountain Almanac',
-              releasedOn: '10/02/2023',
-            },
-            {
-              url: 'https://picsum.photos/id/232/300/300',
-              song: 'Music From Montana Story',
-              by: 'Kevin Morby',
-              releasedOn: '10/01/2023',
-            },
-          ]"
+          :data=topTracks
         />
       </div>
 

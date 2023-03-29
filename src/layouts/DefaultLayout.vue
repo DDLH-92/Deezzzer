@@ -3,9 +3,21 @@ import { onBeforeMount } from "vue";
 import { storeToRefs } from "pinia";
 import { useSongStore } from "../stores/song";
 import MusicPlayer from "../components/MusicPlayer.vue";
+import axios from "axios";
 
 const useSong = useSongStore();
 const { isPlaying, isLyrics, trackTime } = storeToRefs(useSong);
+let topTracks = []
+// const response = await fetch('https://api.deezer.com/chart')
+// console.log(response)
+
+// const response = await fetch('https://api.deezer.com/chart',
+// {
+//   headers : { 'Access-Control-Allow-Origin' : 'Accept'},
+//   method: 'GET',
+//   mode: 'no-cors'
+// }).then(response => console.log(response))
+
 
 onBeforeMount(() => {
   isPlaying.value = false;
