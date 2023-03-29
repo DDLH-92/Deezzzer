@@ -17,7 +17,7 @@ onBeforeMount(() => {
 <template>
   <div
     id="TopNav"
-    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[90px] border-b border-b-[#32323D]"
+    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[64px] border-b border-b-[#32323D]"
   >
     <div class="flex items-center w-full">
       <Magnify class="pl-6 mt-1 pr-2" fillColor="#7E7E88" :size="22" />
