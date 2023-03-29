@@ -17,7 +17,7 @@ onBeforeMount(() => {
 <template>
   <div
     id="TopNav"
-    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[56px] border-b border-b-[#32323D]"
+    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[64px] border-b border-b-[#32323D]"
   >
     <div class="flex items-center w-full">
       <Magnify class="pl-6 mt-1 pr-2" fillColor="#7E7E88" :size="22" />
@@ -34,7 +34,7 @@ onBeforeMount(() => {
       <div class="mr-4 p-1 hover:bg-gray-600 rounded-full cursor-pointer">
         <LogoutButton fillColor="#FFFFFF" :size="20" />
       </div>
-      <img class="rounded-full w-[33px]" src="/images/AvatarTim.jpeg" />
+      <img class="rounded-full w-[50px]" src="/images/AvatarTim.jpeg" />
     </div>
   </div>
   <div

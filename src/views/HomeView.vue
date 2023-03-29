@@ -4,6 +4,13 @@ import MixesInspiredBy from "../components/MixesInspiredBy.vue";
 import CustomCarousel from "../components/CustomCarousel.vue";
 
 let topTracks = [];
+let isLoading = true;
+
+if (localStorage.getItem("topTracks")) {
+  topTracks = JSON.parse(localStorage.getItem("topTracks"));
+  isLoading = false;
+}
+
 axios
   .get("https://cors-anywhere.herokuapp.com/api.deezer.com/chart", {
     mode: "no-cors",
@@ -13,14 +20,17 @@ axios
   .then((response) => {
     console.log("response", response.data.tracks.data);
     topTracks = response.data.tracks.data;
+    isLoading = false;
+    localStorage.setItem("topTracks", JSON.stringify(topTracks));
   })
   .catch((e) => {
     console.log("error", e);
+    isLoading = false;
   });
 </script>
 
-<template>
-  <div class="max-w-[1500px] mx-auto ">
+<template v-if="isLoading">
+  <div class="max-w-[1500px] mx-auto">
     <div class="px-8 mt-8 min-w-[800px] w-full">
       <div class="text-white text-xl font-semibold inline-block">
         TOP 10
@@ -29,7 +39,7 @@ axios
         </div>
       </div>
 
-      <div class="mt-8 min-w-[800px]">
+      <div class="mt-8 min-w-[800px]" v-if="!isLoading">
         <CustomCarousel category :data="topTracks" />
       </div>
 
@@ -42,7 +52,7 @@ axios
         </div>
       </div>
       <div class="mt-8 min-w-[800px] flex flex-wrap gap-4">
-        <div class="w-1/6" :key="track" v-for="track in topTracks">
+        <div class="w-1/2" :key="track" v-for="track in topTracks">
           <MixesInspiredBy category :data="track" />
         </div>
       </div>
