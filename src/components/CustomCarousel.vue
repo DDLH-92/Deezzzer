@@ -17,9 +17,6 @@ const props = defineProps({
   data: Array,
 });
 const { data, category } = toRefs(props);
-console.log('test')
-console.log(data)
-
 
 const slideTo = (val) => {
   if (val && currentSlide.value <= 7) {
