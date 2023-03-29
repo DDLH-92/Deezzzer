@@ -5,7 +5,6 @@ import MusicPlayerVolume from '../components/MusicPlayerVolume.vue'
 
 import ShuffleVariant from 'vue-material-design-icons/ShuffleVariant.vue';
 import HeartOutline from 'vue-material-design-icons/HeartOutline.vue';
-import MicrophoneVariant from 'vue-material-design-icons/MicrophoneVariant.vue';
 import Plus from 'vue-material-design-icons/Plus.vue';
 import Tune from 'vue-material-design-icons/Tune.vue';
 import PictureInPictureBottomRight from 'vue-material-design-icons/PictureInPictureBottomRight.vue';

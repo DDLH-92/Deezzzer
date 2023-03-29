@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "axios": "^1.3.4",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",
     "uniqolor": "^1.1.0",

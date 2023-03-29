@@ -31,20 +31,14 @@
                       :size="27"
                   />
               </div>
-              <img
-                  width="25"
-                  class="absolute z-40 right-0 bottom-0 pb-3 mr-3 contrast-[1.4] brightness-[1.1]"
-                  src="/images/deezer-sound-icon.png"
-              >
-              <img class="rounded-md aspect-square" :src="slide.url">
+              <img class="rounded-md aspect-square" :src="slide.album.cover_big">
           </div>
 
           <div class="text-white text-left mt-2">
-              <div class="text-sm hover:underline cursor-pointer">{{ slide.song }}</div>
+              <div class="text-sm hover:underline cursor-pointer">{{ slide.title }}</div>
               <div class="text-[13px] flex hover:underline text-[#858590] pt-0.5">
-                  by {{ slide.by }}
+                  by {{ slide.artist.name }}
               </div>
-              <div class="text-[11px] pt-0.5 text-[#858590]">Released on {{ slide.releasedOn }}</div>
           </div>
       </RouterLink>
   </div>
@@ -58,4 +52,5 @@ import HeartOutline from 'vue-material-design-icons/HeartOutline.vue'
 import DotsHorizontal from 'vue-material-design-icons/DotsHorizontal.vue'
 let isHover = ref(false)
 const props = defineProps({ slide: Object })
+console.log("Coucou")
 </script>

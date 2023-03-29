@@ -34,10 +34,9 @@ onBeforeMount(() => {
       <div class="mr-4 p-1 hover:bg-gray-600 rounded-full cursor-pointer">
         <LogoutButton fillColor="#FFFFFF" :size="20" />
       </div>
-      <img class="rounded-full w-[33px]" src="/public/images/AvatarTim.jpeg" />
+      <img class="rounded-full w-[33px]" src="/images/AvatarTim.jpeg" />
     </div>
   </div>
-
   <div
     id="SideNav"
     class="fixed w-[200px] bg-[#191922] h-[100vh] border-r border-r-[#32323D]"
@@ -55,5 +54,4 @@ onBeforeMount(() => {
   </div>
 
   <MusicPlayer v-if="currentTrack" />
-  />
 </template>
