@@ -51,7 +51,6 @@ onBeforeMount(() => {
   >
     <slot />
   </div>
+      <MusicPlayer v-show="true" />
 
-  <MusicPlayer v-if="currentTrack" />
-<!-- <MusicPlayer/> -->
 </template>
