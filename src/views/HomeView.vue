@@ -38,14 +38,12 @@ axios
       <div class="text-white text-xl font-semibold inline-block">
         TOP 100
         <div class="text-sm font-light text-[#A2A2AD]">
-          Les 100 titres les plus populaires .
+          Les 100 titres les plus populaires
         </div>
       </div>
       <div class="mt-8 min-w-[800px]">
-        <div class="flex justify-between w-full gap-8">
-          <div class="xl:w-1/3 w-1/2">
-            <MixesInspiredBy category :data="topTracks"></MixesInspiredBy>
-          </div>
+        <div class="flex justify-between w-full gap-8" :key="track" v-for="track in topTracks">
+          <MixesInspiredBy category :data="track" />
         </div>
       </div>
     </div>
