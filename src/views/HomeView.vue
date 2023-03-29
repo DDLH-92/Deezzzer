@@ -3,7 +3,7 @@ import axios from "axios";
 import MixesInspiredBy from "../components/MixesInspiredBy.vue";
 import CustomCarousel from "../components/CustomCarousel.vue";
 
-let top10Tracks = [];
+let topTracks = [];
 axios
   .get("https://cors-anywhere.herokuapp.com/api.deezer.com/chart", {
     mode: "no-cors",
@@ -12,7 +12,7 @@ axios
   })
   .then((response) => {
     console.log("response", response.data.tracks.data);
-    top10Tracks = response.data.tracks.data;
+    topTracks = response.data.tracks.data;
   })
   .catch((e) => {
     console.log("error", e);
@@ -30,7 +30,7 @@ axios
       </div>
 
       <div class="mt-8 min-w-[800px]">
-        <CustomCarousel category :data="top10Tracks" />
+        <CustomCarousel category :data="topTracks" />
       </div>
 
       <div class="py-10"></div>
@@ -44,7 +44,7 @@ axios
       <div class="mt-8 min-w-[800px]">
         <div class="flex justify-between w-full gap-8">
           <div class="xl:w-1/3 w-1/2">
-            <MixesInspiredBy category :data="top10Tracks"></MixesInspiredBy>
+            <MixesInspiredBy category :data="topTracks"></MixesInspiredBy>
           </div>
         </div>
       </div>

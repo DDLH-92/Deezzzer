@@ -6,17 +6,6 @@ import MusicPlayer from "../components/MusicPlayer.vue";
 
 const useSong = useSongStore();
 const { isPlaying, isLyrics, trackTime } = storeToRefs(useSong);
-let topTracks = []
-// const response = await fetch('https://api.deezer.com/chart')
-// console.log(response)
-
-// const response = await fetch('https://api.deezer.com/chart',
-// {
-//   headers : { 'Access-Control-Allow-Origin' : 'Accept'},
-//   method: 'GET',
-//   mode: 'no-cors'
-// }).then(response => console.log(response))
-
 
 onBeforeMount(() => {
   isPlaying.value = false;
@@ -65,5 +54,4 @@ onBeforeMount(() => {
   </div>
 
   <MusicPlayer v-if="currentTrack" />
-  />
 </template>
