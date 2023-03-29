@@ -97,6 +97,7 @@ watch(() => currentTrack.value.id, (val) => {
     }
     isLyrics.value = false
 })
+
 </script>
 
 <template>
@@ -276,4 +277,5 @@ watch(() => currentTrack.value.id, (val) => {
     width: 12px;
     height: 12px;
 }
+
 </style>
