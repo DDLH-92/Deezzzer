@@ -42,7 +42,7 @@ export default {
         class="h-40 mb-4"
       />
     </div>
-    <h1 class="text-green-500 font-semibold mb-8">DIZZZER</h1>
+    <h1 class="font-sizatext-green-500 font-semibold mb-8">DIZZZER</h1>
     <form class="flex flex-col items-center">
       <div class="mb-4">
         <input
