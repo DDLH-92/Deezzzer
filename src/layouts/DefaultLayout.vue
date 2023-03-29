@@ -53,4 +53,5 @@ onBeforeMount(() => {
   </div>
 
   <MusicPlayer v-if="currentTrack" />
+<!-- <MusicPlayer/> -->
 </template>

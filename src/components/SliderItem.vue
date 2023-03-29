@@ -53,5 +53,4 @@ import HeartOutline from 'vue-material-design-icons/HeartOutline.vue'
 import DotsHorizontal from 'vue-material-design-icons/DotsHorizontal.vue'
 let isHover = ref(false)
 const props = defineProps({ slide: Object })
-console.log("Coucou")
 </script>
