@@ -6,6 +6,11 @@ import CustomCarousel from "../components/CustomCarousel.vue";
 let topTracks = [];
 let isLoading = true;
 
+if (localStorage.getItem("topTracks")) {
+  topTracks = JSON.parse(localStorage.getItem("topTracks"));
+  isLoading = false;
+}
+
 axios
   .get("https://cors-anywhere.herokuapp.com/api.deezer.com/chart", {
     mode: "no-cors",
@@ -16,6 +21,7 @@ axios
     console.log("response", response.data.tracks.data);
     topTracks = response.data.tracks.data;
     isLoading = false;
+    localStorage.setItem("topTracks", JSON.stringify(topTracks));
   })
   .catch((e) => {
     console.log("error", e);
@@ -23,9 +29,9 @@ axios
   });
 </script>
 
-<template>
+<template v-if="isLoading">
   <div class="max-w-[1500px] mx-auto">
-    <div class="px-8 mt-8 min-w-[800px] w-full" v-if="!isLoading">
+    <div class="px-8 mt-8 min-w-[800px] w-full">
       <div class="text-white text-xl font-semibold inline-block">
         TOP 10
         <div class="text-sm font-light text-[#A2A2AD]">
@@ -33,8 +39,8 @@ axios
         </div>
       </div>
 
-      <div class="mt-8 min-w-[800px]">
-        <CustomCarousel category :data="topTracks" v-if="topTracks.length" />
+      <div class="mt-8 min-w-[800px]" v-if="!isLoading">
+        <CustomCarousel category :data="topTracks" />
       </div>
 
       <div class="py-10"></div>
