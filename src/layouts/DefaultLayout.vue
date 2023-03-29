@@ -43,9 +43,6 @@ onBeforeMount(() => {
     </div>
     <div class="w-full pl-6 pt-3 cursor-pointer relative">
       <div class="absolute bottom-0 left-0 right-0 text-center mb-3">
-    <span class="text-[#B3B3B3] text-xs uppercase tracking-widest font-spotify whitespace-nowrap transform rotate-90">
-      DIZZZER
-    </span>
   </div>
     </div>
   </div>
