@@ -20,7 +20,7 @@ axios
 </script>
 
 <template>
-  <div class="max-w-[1500px] mx-auto">
+  <div class="max-w-[1500px] mx-auto ">
     <div class="px-8 mt-8 min-w-[800px] w-full">
       <div class="text-white text-xl font-semibold inline-block">
         TOP 10
@@ -28,7 +28,6 @@ axios
           Découvrez les titres les plus populaires du moment !
         </div>
       </div>
-
 
       <div class="mt-8 min-w-[800px]">
         <CustomCarousel category :data="topTracks" />
@@ -43,7 +42,7 @@ axios
         </div>
       </div>
       <div class="mt-8 min-w-[800px] flex flex-wrap gap-4">
-        <div class="w-1/2" :key="track" v-for="track in topTracks">
+        <div class="w-1/6" :key="track" v-for="track in topTracks">
           <MixesInspiredBy category :data="track" />
         </div>
       </div>
