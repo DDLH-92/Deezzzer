@@ -29,6 +29,7 @@ axios
         </div>
       </div>
 
+
       <div class="mt-8 min-w-[800px]">
         <CustomCarousel category :data="topTracks" />
       </div>
@@ -41,8 +42,8 @@ axios
           Les 100 titres les plus populaires
         </div>
       </div>
-      <div class="mt-8 min-w-[800px]">
-        <div class="flex justify-between w-full gap-8" :key="track" v-for="track in topTracks">
+      <div class="mt-8 min-w-[800px] flex flex-wrap gap-4">
+        <div class="w-1/2" :key="track" v-for="track in topTracks">
           <MixesInspiredBy category :data="track" />
         </div>
       </div>
