@@ -9,13 +9,13 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: LoginView,
       meta: { requiresAuth: false }
     },
     {
-      path: '/',
+      path: '/home',
       name: 'Home',
       component: HomeView,
       meta: { requiresAuth: true, layout: DefaultLayout }
@@ -27,7 +27,7 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   if (requiresAuth && !isAuthenticated) {
-    next('/login')
+    next('/home')
   } else {
     next()
   }

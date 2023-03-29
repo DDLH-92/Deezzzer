@@ -15,7 +15,7 @@ export default {
       try {
         if (state.email === "test" && state.password === "test") {
           localStorage.setItem("isAuthenticated", "true");
-          router.push("/");
+          router.push("/home");
         } else {
           state.error = "Adresse email ou mot de passe incorrect";
         }
@@ -42,7 +42,6 @@ export default {
         class="h-40 mb-4"
       />
     </div>
-    <h1 class="font-sizatext-green-500 font-semibold mb-8">DIZZZER</h1>
     <form class="flex flex-col items-center">
       <div class="mb-4">
         <input

@@ -37,14 +37,16 @@ onBeforeMount(() => {
       <img class="rounded-full w-[50px]" src="/images/AvatarTim.jpeg" />
     </div>
   </div>
-  <div
-    id="SideNav"
-    class="fixed w-[200px] bg-[#191922] h-[100vh] border-r border-r-[#32323D]"
-  >
-    <div class="w-full pl-6 pt-3 cursor-pointer">
-      <RouterLink to="/">
-        <img width="130" src="" />
-      </RouterLink>
+  <div id="SideNav" class="fixed w-[200px] bg-[#191922] h-[100vh] border-r border-r-[#32323D]">
+    <div class="flex items-center w-full my-[20px]">
+      <img src="public/images/Logo-dizzzer.png" alt="Logo" />
+    </div>
+    <div class="w-full pl-6 pt-3 cursor-pointer relative">
+      <div class="absolute bottom-0 left-0 right-0 text-center mb-3">
+    <span class="text-[#B3B3B3] text-xs uppercase tracking-widest font-spotify whitespace-nowrap transform rotate-90">
+      DIZZZER
+    </span>
+  </div>
     </div>
   </div>
   <div

@@ -1,4 +1,5 @@
 <template>
+
   <div class="pl-8">
       <RouterLink to="/artist" class="cursor-pointer">
           <div

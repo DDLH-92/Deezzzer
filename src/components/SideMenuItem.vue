@@ -35,7 +35,5 @@ const isHover = () => {
 </script>
 
 <template>
-    <div class="flex items-center w-full my-[20px]">
-      <img src="public/images/Logo-dizzzer.png" alt="Logo">
-    </div>
+
 </template>
