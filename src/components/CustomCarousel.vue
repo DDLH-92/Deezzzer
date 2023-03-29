@@ -6,6 +6,7 @@ import ChevronRight from "vue-material-design-icons/ChevronRight.vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
 import SliderItem from "./SliderItem.vue";
+import HomeView  from "../views/HomeView.vue";
 
 let currentSlide = ref(0);
 let isHoverCategory = ref(false);
@@ -16,6 +17,9 @@ const props = defineProps({
   data: Array,
 });
 const { data, category } = toRefs(props);
+console.log('test')
+console.log(data)
+
 
 const slideTo = (val) => {
   if (val && currentSlide.value <= 7) {

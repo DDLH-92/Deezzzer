@@ -5,7 +5,7 @@ import CustomCarousel from "../components/CustomCarousel.vue";
 
 let top10Tracks = [];
 axios
-  .get("https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/tracks?limit=10", {
+  .get("https://cors-anywhere.herokuapp.com/api.deezer.com/chart", {
     mode: "no-cors",
     headers: { "Access-Control-Allow-Origin": "Accept" },
     credentials: "same-origin",

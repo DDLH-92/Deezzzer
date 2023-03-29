@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import SongRow from '../components/SongRow.vue';
 
 import Magnify from 'vue-material-design-icons/Magnify.vue';
@@ -125,4 +125,4 @@ const playFunc = () => {
         height: 4px;
         background-color: rgb(189, 189, 189);
         border-radius: 100%;  }
-</style>
+</style> -->
