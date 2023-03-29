@@ -1,22 +1,18 @@
 <script setup>
 import axios from "axios";
-
 import MixesInspiredBy from "../components/MixesInspiredBy.vue";
 import CustomCarousel from "../components/CustomCarousel.vue";
 
 let top10Tracks = [];
-// const response = await fetch('https://api.deezer.com/chart')
-// console.log(response)
 axios
-  .get("https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart", {
+  .get("https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/tracks?limit=10", {
     mode: "no-cors",
     headers: { "Access-Control-Allow-Origin": "Accept" },
     credentials: "same-origin",
-    //headers: { 'Accept' : '*/*', 'Accept-Encoding':'gzip, deflate, br'}
   })
   .then((response) => {
     console.log("response", response.data.tracks.data);
-    topTracks = response.data.tracks.data;
+    top10Tracks = response.data.tracks.data;
   })
   .catch((e) => {
     console.log("error", e);

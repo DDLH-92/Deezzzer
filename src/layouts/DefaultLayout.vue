@@ -3,7 +3,6 @@ import { onBeforeMount } from "vue";
 import { storeToRefs } from "pinia";
 import { useSongStore } from "../stores/song";
 import MusicPlayer from "../components/MusicPlayer.vue";
-import axios from "axios";
 
 const useSong = useSongStore();
 const { isPlaying, isLyrics, trackTime } = storeToRefs(useSong);
