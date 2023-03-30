@@ -27,7 +27,7 @@ const getData = async () => {
     .then((response) => {
       if (response.headers["content-type"].includes("application/json")) {
         top100Tracks.value = response.data.data;
-  console.log("test",top100Tracks.value)
+  console.log("test",apiEndpoint)
 
       } else {
         console.error("Response is not JSON");

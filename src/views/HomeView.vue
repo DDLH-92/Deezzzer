@@ -25,8 +25,8 @@ import SearchAndPagination from "../components/SearchAndPagination.vue";
           Les 100 titres les plus populaires .
         </div>
       </div>
-      <div class="mt-8 min-w-[800px] grid grid-cols-2 gap-4">
-        <div class="grid-cols-2" :key="track">
+      <div class="mt-8 min-w-[800px] grid grid-cols-3 gap-4">
+        <div class="grid-cols-3" :key="track">
           <SearchAndPagination category :data="topTracks" />
         </div>
       </div>
