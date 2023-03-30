@@ -2,10 +2,16 @@
 import { storeToRefs } from "pinia";
 import { useSongStore } from "../stores/song";
 import MusicPlayer from "../components/MusicPlayer.vue";
+import { useRouter } from "vue-router";
 
 const useSong = useSongStore();
 const { currentTrack } = storeToRefs(useSong);
+const router = useRouter();
 
+const logout = () => {
+  localStorage.removeItem("isAuthenticated");
+  router.push("/");
+};
 </script>
 
 <template>
