@@ -15,9 +15,14 @@ const logout = () => {
 </script>
 
 <template>
-
+          <!--  -->
   <div id="TopNav"
-    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[64px] border-b border-b-[#32323D]">
+    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[64px] border-b border-b-[#32323D]"><input
+            v-model.trim="searchTerm"
+            type="text"
+            class="w-[280px] pl-10 pr-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            placeholder="Rechercher"
+          />
     <div class="flex items-center w-full">
       <Magnify class="pl-6 mt-1 pr-2" fillColor="#7E7E88" :size="22" />
       <input
