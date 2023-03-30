@@ -5,6 +5,7 @@ import MusicPlayer from "../components/MusicPlayer.vue";
 
 const useSong = useSongStore();
 const { currentTrack } = storeToRefs(useSong);
+console.log(currentTrack);
 </script>
 
 <template>

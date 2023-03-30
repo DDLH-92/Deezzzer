@@ -5,7 +5,7 @@ export const useSongStore = defineStore('song', {
     isPlaying: false,
     audio: null,
     currentArtist: null,
-    currentTrack: {},
+    currentTrack: null,
     trackTime: null,
     currentVolume: 80,
     isLyrics: false,
