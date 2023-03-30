@@ -50,14 +50,14 @@ onMounted(() => {
         <button
           :disabled="currentPage === 1"
           @click="currentPage -= 1"
-          class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-300 hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-auto transition-colors duration-300 hover:bg-green-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Précédent
         </button>
         <button
           :disabled="currentPage === totalPages"
           @click="setPage((currentPage += 1))"
-          class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-300 hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-auto transition-colors duration-300 hover:bg-green-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Suivant
         </button>
