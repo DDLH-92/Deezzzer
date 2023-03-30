@@ -5,7 +5,7 @@ import MusicPlayer from "../components/MusicPlayer.vue";
 
 const useSong = useSongStore();
 const { currentTrack } = storeToRefs(useSong);
-console.log(currentTrack);
+
 </script>
 
 <template>
@@ -18,12 +18,9 @@ console.log(currentTrack);
         placeholder="Rechercher un titre" type="text" />
     </div>
     <div class="flex items-center pr-10">
-      <div class="mr-4 p-1 hover:bg-gray-600 rounded-full cursor-pointer">
-        <Bell fillColor="#FFFFFF" :size="20" />
-      </div>
-      <div class="mr-4 p-1 hover:bg-gray-600 rounded-full cursor-pointer">
-        <LogoutButton fillColor="#FFFFFF" :size="20" />
-      </div>
+      <button class=" text-white p-1 bg-transparent hover:text-[#45e811] cursor-pointer mr-5" @click="logout">
+        Déconnexion
+      </button>
       <img class="rounded-full w-[50px]" src="/images/AvatarTim.jpeg" />
     </div>
   </div>

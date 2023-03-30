@@ -1,3 +1,12 @@
+<script setup>
+import { ref } from "vue";
+import Play from "vue-material-design-icons/Play.vue";
+import { useSongStore } from "../stores/song";
+let isHover = ref(false);
+const props = defineProps({ slide: Object });
+const useSong = useSongStore();
+</script>
+
 <template>
   <div class="pl-8">
     <div
@@ -29,12 +38,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref } from "vue";
-import Play from "vue-material-design-icons/Play.vue";
-import { useSongStore } from "../stores/song";
-let isHover = ref(false);
-const props = defineProps({ slide: Object });
-const useSong = useSongStore();
-</script>
