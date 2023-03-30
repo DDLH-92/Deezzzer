@@ -15,6 +15,7 @@ const logout = () => {
 </script>
 
 <template>
+
   <div id="TopNav"
     class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[64px] border-b border-b-[#32323D]">
     <div class="flex items-center w-full">

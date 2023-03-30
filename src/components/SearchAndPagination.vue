@@ -15,20 +15,19 @@ const searchTerm = ref("");
 let currentPage = ref(0);
 const itemsPerPage = 8;
 
-const setPage = page => {
+const setPage = (page) => {
   currentPage.value = page;
-  getData()
-}
+  getData();
+};
 
 const getData = async () => {
   const apiEndpoint = `http://localhost:3000/top10?index=${currentPage.value}`;
+  console.log("test", apiEndpoint);
   axios
     .get(apiEndpoint)
     .then((response) => {
       if (response.headers["content-type"].includes("application/json")) {
         top100Tracks.value = response.data.data;
-  console.log("test",apiEndpoint)
-
       } else {
         console.error("Response is not JSON");
       }
@@ -45,16 +44,32 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="max-w-[1500px] mx-auto">
+  <div >
     <div class="px-8 mt-8 min-w-[800px] w-full mt-4">
+      <div class="my-8 flex justify-between items-center">
+        <button
+          :disabled="currentPage === 1"
+          @click="currentPage -= 1"
+          class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-300 hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Précédent
+        </button>
+        <button
+          :disabled="currentPage === totalPages"
+          @click="setPage((currentPage += 1))"
+          class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-300 hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Suivant
+        </button>
+      </div>
       <div class="flex justify-between items-center mb-6">
         <div class="relative">
-          <input
+          <!-- <input
             v-model.trim="searchTerm"
             type="text"
             class="w-[280px] pl-10 pr-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             placeholder="Rechercher"
-          />
+          /> -->
           <button
             v-if="searchTerm"
             @click="searchTerm = ''"
@@ -75,26 +90,14 @@ onMounted(() => {
           </button>
         </div>
       </div>
-      <div class="mt-8 min-w-[800px] grid grid-cols-2 gap-4">
-        <div class="grid-cols-2" :key="track.id" v-for="track in top100Tracks">
+      <div class="mt-8 min-w-[800px] grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div
+          class="w-full sm:w-auto"
+          :key="track.id"
+          v-for="track in top100Tracks"
+        >
           <CardTop100 :track="track" />
         </div>
-      </div>
-      <div class="my-8 flex justify-center items-center">
-        <button
-          :disabled="currentPage === 1"
-          @click="currentPage -= 1"
-          class="mr-2 px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          Précédent
-        </button>
-        <button
-          :disabled="currentPage === totalPages"
-          @click="setPage(currentPage += 1)"
-          class="px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          Suivant
-        </button>
       </div>
     </div>
   </div>
