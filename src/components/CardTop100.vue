@@ -5,8 +5,8 @@ import Play from "vue-material-design-icons/Play.vue";
 
 let isHover = ref(false);
 
-const props = defineProps({ data: Object });
-const { data } = toRefs(props);
+const props = defineProps({ track: Object });
+const { track } = toRefs(props);
 </script>
 
 <template>
@@ -25,16 +25,16 @@ const { data } = toRefs(props);
         " class="absolute z-20 p-1.5 rounded-full bg-white left-[6px]">
           <Play :size="30" />
         </div>
-        <img class="min-h-[54px] min-w-[54px] rounded-sm z-0" :src="data.album.cover" />
+        <img class="min-h-[54px] min-w-[54px] rounded-sm z-0" :src="track.album.cover" />
       </div>
       <div class="truncate w-full ml-4">
         <p class="hover:underline truncate max-w-[95%] text-gray-200 font-light text-[15px] cursor-pointer">
-          {{ data.title }}
+          {{ track.title }}
         </p>
         <p class="text-[#787882] truncate text-[12px] max-w-[95%] font-light">
           by
           <span class="hover:underline cursor-pointer">{{
-            data.artist.name
+            track.artist.name
           }}</span>
         </p>
       </div>

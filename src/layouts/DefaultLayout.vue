@@ -20,7 +20,7 @@ const logout = () => {
     <div class="flex items-center w-full">
       <Magnify class="pl-6 mt-1 pr-2" fillColor="#7E7E88" :size="22" />
       <input
-        class="p-1 bg-transparent outline-none font-[300] placeholder-[#BEBEC7] text-[#FFFFFF] w-full max-w-xl placeholder-green-500"
+        class="p-1 bg-transparent outline-none font-[300] placeholder-[#BEBEC7] text-[#FFFFFF] w-full max-w-xl placeholder-[#45e811]"
         placeholder="Rechercher un titre" type="text" />
     </div>
     <div class="flex items-center pr-10">

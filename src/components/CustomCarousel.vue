@@ -1,24 +1,16 @@
 <script setup>
-import { ref, toRefs } from "vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 import { RouterLink } from "vue-router";
 import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
 import ChevronRight from "vue-material-design-icons/ChevronRight.vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
 import SliderItem from "./SliderItem.vue";
-import HomeView  from "../views/HomeView.vue";
 
 let currentSlide = ref(0);
 let isHoverCategory = ref(false);
-let isHover = ref(false);
-
-const props = defineProps({
-  category: String,
-  data: Array,
-});
-const { data, category } = toRefs(props);
-
-console.log
+let top10Tracks = ref([]);
 
 const slideTo = (val) => {
   if (val && currentSlide.value <= 7) {
@@ -36,10 +28,32 @@ const slideTo = (val) => {
       currentSlide.value = 0;
     }
   }
-};
+  }
+
+  const getData = async () => {
+    const apiEndpoint = `http://localhost:3000/top10`;
+    axios
+      .get(apiEndpoint)
+      .then((response) => {
+        if (response.headers["content-type"].includes("application/json")) {
+          top10Tracks.value = response.data.data;
+        } else {
+          console.error("Response is not JSON");
+        }
+      })
+      .catch((e) => {
+        console.log("error", e);
+        isLoading = false;
+      });
+  };
+
+  onMounted(() => {
+    getData();
+  });
+
 </script>
 <template>
-  <div>
+  <div v-if="!isFetching">
     <div class="flex justify-between pb-5 ml-8 mr-6">
       <RouterLink
         to="/artist"
@@ -76,7 +90,11 @@ const slideTo = (val) => {
       :transition="800"
       snapAlign="start"
     >
-      <Slide v-for="slide in data" :key="slide.id" class="flex items-baseline">
+      <Slide
+        v-for="slide in top10Tracks"
+        :key="slide.id"
+        class="flex items-baseline"
+      >
         <SliderItem :slide="slide" />
       </Slide>
     </Carousel>
