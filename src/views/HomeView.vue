@@ -1,59 +1,33 @@
 <script setup>
-import axios from "axios";
-import MixesInspiredBy from "../components/MixesInspiredBy.vue";
+import CardTop100 from "../components/CardTop100.vue";
 import CustomCarousel from "../components/CustomCarousel.vue";
+import SearchAndPagination from "../components/SearchAndPagination.vue";
 
-let topTracks = [];
-let isLoading = true;
 
-if (localStorage.getItem("topTracks")) {
-  topTracks = JSON.parse(localStorage.getItem("topTracks"));
-  isLoading = false;
-}
-
-axios
-  .get("https://cors-anywhere.herokuapp.com/api.deezer.com/chart", {
-    mode: "no-cors",
-    headers: { "Access-Control-Allow-Origin": "Accept" },
-    credentials: "same-origin",
-  })
-  .then((response) => {
-    console.log("response", response.data.tracks.data);
-    topTracks = response.data.tracks.data;
-    isLoading = false;
-    localStorage.setItem("topTracks", JSON.stringify(topTracks));
-  })
-  .catch((e) => {
-    console.log("error", e);
-    isLoading = false;
-  });
 </script>
 
 <template v-if="isLoading">
   <div class="max-w-[1500px] mx-auto">
-    <div class="px-8 mt-8 min-w-[800px] w-full">
+    <div class="px-8 mt-8 min-w-[800px] w-full mt-4">
       <div class="text-white text-xl font-semibold inline-block">
         TOP 10
         <div class="text-sm font-light text-[#A2A2AD]">
           Découvrez les titres les plus populaires du moment !
         </div>
       </div>
-
-      <div class="mt-8 min-w-[800px]" v-if="!isLoading">
-        <CustomCarousel category :data="topTracks" />
+      <div class="mt-8 min-w-[800px]">
+        <CustomCarousel />
       </div>
-
       <div class="py-10"></div>
-
       <div class="text-white text-xl font-semibold inline-block">
         TOP 100
         <div class="text-sm font-light text-[#A2A2AD]">
-          Les 100 titres les plus populaires
+          Les 100 titres les plus populaires .
         </div>
       </div>
-      <div class="mt-8 min-w-[800px] flex flex-wrap gap-4">
-        <div class="w-1/2" :key="track" v-for="track in topTracks">
-          <MixesInspiredBy category :data="track" />
+      <div class="mt-8 min-w-[800px] grid grid-cols-3 gap-4">
+        <div class="grid-cols-3" :key="track">
+          <SearchAndPagination category :data="topTracks" />
         </div>
       </div>
     </div>
