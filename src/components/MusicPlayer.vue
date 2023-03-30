@@ -39,6 +39,7 @@ onMounted(() => {
             loadmetadata()
         }, 300)
     }
+    console.log({currentTrack})
     if (currentTrack.value) {
         seeker.value.addEventListener("change", function () {
             const time = audio.value.duration * (seeker.value.value / 100);
@@ -152,7 +153,7 @@ watch(() => currentTrack.value.id, (val) => {
             <div class="flex items-center justify-between pl-1 relative top-1 mx-7">
                 <div class="flex items-center">
                     <div class="bg-[#2E2E39] py-0.5 px-1 text-[10px] text-[#72727D]">ALBUM</div>
-                    <div class="text-white text-[14px] font-[300] ml-3">{{ currentTrack.name }}</div>
+                    <div class="text-white text-[14px] font-[300] ml-3">{{ currentTrack.title }}</div>
                     <div class="text-white relative -top-1 left-[6px]">.</div>
                     <div class="text-white text-[14px] font-[300] ml-3">{{ currentArtist.name }}</div>
                 </div>
@@ -220,7 +221,6 @@ watch(() => currentTrack.value.id, (val) => {
                     class="text-[#8a8a8a] text-[10px] pl-2 relative -bottom-[5px]"
                 >
                 </div>
-                    {{ isTrackTimeTotal }}
                 </div>
             </div>
         </div>

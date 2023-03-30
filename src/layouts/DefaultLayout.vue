@@ -5,13 +5,8 @@ import { useSongStore } from "../stores/song";
 import MusicPlayer from "../components/MusicPlayer.vue";
 
 const useSong = useSongStore();
-const { isPlaying, isLyrics, trackTime } = storeToRefs(useSong);
+const { currentTrack } = storeToRefs(useSong);
 
-onBeforeMount(() => {
-  isPlaying.value = false;
-  isLyrics.value = false;
-  trackTime.value = "0:00";
-});
 </script>
 
 <template>
@@ -51,6 +46,5 @@ onBeforeMount(() => {
   >
     <slot />
   </div>
-      <!-- <MusicPlayer v-show="true" /> -->
-
+  <MusicPlayer v-if="currentTrack"/>
 </template>

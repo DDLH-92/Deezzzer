@@ -12,10 +12,9 @@ export const useSongStore = defineStore('song', {
     lyricsPosition: '0:00'
   }),
   actions: {
-    loadSong(artist, track) {
-        this.currentArtist = artist
+    loadSong(track) {
+        this.currentArtist = track.artist
         this.currentTrack = track
-
         if (this.audio && this.audio.src) {
             this.audio.pause()
             this.isPlaying = false
@@ -23,7 +22,7 @@ export const useSongStore = defineStore('song', {
         }
 
         this.audio = new Audio()
-        this.audio.src = track.path
+        this.audio.src = track.preview
 
         setTimeout(() => {
             this.isPlaying = true

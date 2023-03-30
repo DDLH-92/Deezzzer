@@ -35,5 +35,4 @@ let isHover = ref(false)
 
 const props = defineProps({ data: Object })
 const { data } = toRefs(props);
-console.log(data)
 </script>

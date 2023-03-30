@@ -14,7 +14,6 @@ if (localStorage.getItem("topTracks")) {
 const apiEndpoint = "http://localhost:3000/top10";
 const proxyEndpoint = "http://localhost:3000/proxy";
 
-console.log("api", 'http://localhost:3000/top10')
 axios.get('http://localhost:3000/top10')
   .then(response => {
     if (response.headers['content-type'].includes('application/json')) {
