@@ -18,6 +18,8 @@ const props = defineProps({
 });
 const { data, category } = toRefs(props);
 
+console.log
+
 const slideTo = (val) => {
   if (val && currentSlide.value <= 7) {
     let res = currentSlide.value + 4;
@@ -74,7 +76,7 @@ const slideTo = (val) => {
       :transition="800"
       snapAlign="start"
     >
-      <Slide v-for="slide in data" :key="slide" class="flex items-baseline">
+      <Slide v-for="slide in data" :key="slide.id" class="flex items-baseline">
         <SliderItem :slide="slide" />
       </Slide>
     </Carousel>

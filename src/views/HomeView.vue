@@ -11,19 +11,22 @@ if (localStorage.getItem("topTracks")) {
   isLoading = false;
 }
 
-axios
-  .get("https://cors-anywhere.herokuapp.com/api.deezer.com/chart", {
-    mode: "no-cors",
-    headers: { "Access-Control-Allow-Origin": "Accept" },
-    credentials: "same-origin",
+const apiEndpoint = "http://localhost:3000/top10";
+const proxyEndpoint = "http://localhost:3000/proxy";
+
+console.log("api", 'http://localhost:3000/top10')
+axios.get('http://localhost:3000/top10')
+  .then(response => {
+    if (response.headers['content-type'].includes('application/json')) {
+      topTracks = response.data;
+      isLoading = false;
+      localStorage.setItem("topTracks", JSON.stringify(topTracks.data));
+    } else {
+      console.error('Response is not JSON');
+      isLoading = false;
+    }
   })
-  .then((response) => {
-    console.log("response", response.data.tracks.data);
-    topTracks = response.data.tracks.data;
-    isLoading = false;
-    localStorage.setItem("topTracks", JSON.stringify(topTracks));
-  })
-  .catch((e) => {
+  .catch(e => {
     console.log("error", e);
     isLoading = false;
   });
@@ -51,8 +54,8 @@ axios
           Les 100 titres les plus populaires
         </div>
       </div>
-      <div class="mt-8 min-w-[800px] flex flex-wrap gap-4">
-        <div class="w-1/2" :key="track" v-for="track in topTracks">
+      <div class="mt-8 min-w-[800px] grid grid-cols-2 gap-4">
+        <div class="grid-cols-2" :key="track" v-for="track in topTracks">
           <MixesInspiredBy category :data="track" />
         </div>
       </div>

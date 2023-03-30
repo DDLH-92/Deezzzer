@@ -1,47 +1,27 @@
 <template>
 
   <div class="pl-8">
-      <RouterLink to="/artist" class="cursor-pointer">
-          <div
-              class="relative"
-              @mouseenter="isHover = true"
-              @mouseleave="isHover = false"
-          >
-              <div
-                  :class="isHover ? 'transition ease-in duration-150 bg-opacity-30' : 'transition ease-out duration-150 bg-opacity-5'"
-                  class="absolute w-full h-full bg-black z-10 rounded-md"
-              />
-              <div class="absolute z-50 bottom-3 left-3 rounded-full bg-white p-1.5">
-                  <Play :size="27"/>
-              </div>
-              <div
-                  :class="isHover ? 'transition ease-in duration-150 bg-opacity-100' : 'transition ease-out duration-150 bg-opacity-0'"
-                  class="absolute z-50 bottom-3 left-[60px] rounded-full bg-white p-2"
-              >
-                  <HeartOutline
-                      :class="isHover ? 'transition ease-in duration-150 opacity-100' : 'transition ease-out duration-150 opacity-0'"
-                      :size="23"
-                  />
-              </div>
-              <div
-                  :class="isHover ? 'transition ease-in duration-150 bg-opacity-100' : 'transition ease-out duration-150 bg-opacity-0'"
-                  class="absolute z-50 bottom-3 left-[107px] rounded-full bg-white p-1.5"
-              >
-                  <DotsHorizontal
-                      :class="isHover ? 'transition ease-in duration-150 opacity-100' : 'transition ease-out duration-150 opacity-0'"
-                      :size="27"
-                  />
-              </div>
-              <img class="rounded-md aspect-square" :src="slide.album.cover_big">
-          </div>
+    <div
+      class="relative"
+      @mouseenter="isHover = true"
+      @mouseleave="isHover = false"
+    >
+      <div
+        :class="isHover ? 'transition ease-in duration-150 bg-opacity-30' : 'transition ease-out duration-150 bg-opacity-5'"
+        class="absolute w-full h-full bg-black z-10 rounded-md"
+      />
+      <div class="absolute z-50 bottom-3 left-3 rounded-full bg-white p-1.5">
+          <Play :size="27"/>
+      </div>
+      <img class="rounded-md aspect-square" :src="slide.album.cover_big">
+    </div>
 
-          <div class="text-white text-left mt-2">
-              <div class="text-sm hover:underline cursor-pointer">{{ slide.title }}</div>
-              <div class="text-[13px] flex hover:underline text-[#858590] pt-0.5">
-                  by {{ slide.artist.name }}
-              </div>
-          </div>
-      </RouterLink>
+    <div class="text-white text-left mt-2">
+        <div class="text-sm hover:underline cursor-pointer">{{ slide.title }}</div>
+        <div class="text-[13px] flex hover:underline text-[#858590] pt-0.5">
+          by {{ slide.artist.name }}
+        </div>
+    </div>
   </div>
 </template>
 

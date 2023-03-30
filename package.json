@@ -10,8 +10,11 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "axios": "^1.3.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",
+    "request": "^2.88.2",
     "uniqolor": "^1.1.0",
     "vue": "^3.2.45",
     "vue-material-design-icons": "^5.2.0",

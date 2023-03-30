@@ -27,7 +27,7 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   if (requiresAuth && !isAuthenticated) {
-    next('/home')
+    next('/')
   } else {
     next()
   }
