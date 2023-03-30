@@ -1,6 +1,6 @@
 <script setup>
 import axios from "axios";
-import MixesInspiredBy from "../components/MixesInspiredBy.vue";
+import CardTop100 from "../components/CardTop100.vue";
 import CustomCarousel from "../components/CustomCarousel.vue";
 
 let topTracks = [];
@@ -14,18 +14,19 @@ if (localStorage.getItem("topTracks")) {
 const apiEndpoint = "http://localhost:3000/top10";
 const proxyEndpoint = "http://localhost:3000/proxy";
 
-axios.get('http://localhost:3000/top10')
-  .then(response => {
-    if (response.headers['content-type'].includes('application/json')) {
+axios
+  .get("http://localhost:3000/top10")
+  .then((response) => {
+    if (response.headers["content-type"].includes("application/json")) {
       topTracks = response.data;
       isLoading = false;
       localStorage.setItem("topTracks", JSON.stringify(topTracks.data));
     } else {
-      console.error('Response is not JSON');
+      console.error("Response is not JSON");
       isLoading = false;
     }
   })
-  .catch(e => {
+  .catch((e) => {
     console.log("error", e);
     isLoading = false;
   });
@@ -40,22 +41,19 @@ axios.get('http://localhost:3000/top10')
           Découvrez les titres les plus populaires du moment !
         </div>
       </div>
-
       <div class="mt-8 min-w-[800px]" v-if="!isLoading">
         <CustomCarousel category :data="topTracks" />
       </div>
-
       <div class="py-10"></div>
-
       <div class="text-white text-xl font-semibold inline-block">
         TOP 100
         <div class="text-sm font-light text-[#A2A2AD]">
-          Les 100 titres les plus populaires
+          Les 100 titres les plus populaires .
         </div>
       </div>
       <div class="mt-8 min-w-[800px] grid grid-cols-2 gap-4">
         <div class="grid-cols-2" :key="track" v-for="track in topTracks">
-          <MixesInspiredBy category :data="track" />
+          <CardTop100 category :data="track" />
         </div>
       </div>
     </div>

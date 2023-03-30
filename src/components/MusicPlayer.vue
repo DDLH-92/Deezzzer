@@ -1,8 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-
 import MusicPlayerVolume from '../components/MusicPlayerVolume.vue'
-
 import ShuffleVariant from 'vue-material-design-icons/ShuffleVariant.vue';
 import HeartOutline from 'vue-material-design-icons/HeartOutline.vue';
 import Plus from 'vue-material-design-icons/Plus.vue';
@@ -254,8 +252,8 @@ watch(() => currentTrack.value.id, (val) => {
                 </div>
             </div>
             <div class="flex items-center ml-6 border-l border-l-[#363636]">
-                <img class="rounded-sm ml-6" width="28" :src="currentArtist.albumCover">
-                <div class="text-xs ml-1.5 text-white font-light">Queue</div>
+                <img class="rounded-sm ml-6" width="28" :src="currenttrack.albumCover">
+
             </div>
         </div>
     </div>

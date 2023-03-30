@@ -33,8 +33,8 @@
 <script setup>
 import { ref } from "vue";
 import Play from "vue-material-design-icons/Play.vue";
-import { useSongStore } from '../stores/song'
+import { useSongStore } from "../stores/song";
 let isHover = ref(false);
 const props = defineProps({ slide: Object });
-const useSong = useSongStore()
+const useSong = useSongStore();
 </script>
