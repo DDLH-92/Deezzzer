@@ -3,7 +3,6 @@ import { storeToRefs } from "pinia";
 import { useSongStore } from "../stores/song";
 import MusicPlayer from "../components/MusicPlayer.vue";
 import { useRouter } from "vue-router";
-import SearchAndPagination from "../components/SearchAndPagination.vue";
 
 const useSong = useSongStore();
 const { currentTrack } = storeToRefs(useSong);
