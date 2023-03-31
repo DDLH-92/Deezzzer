@@ -1,5 +1,4 @@
 <script setup>
-import CardTop100 from "../components/CardTop100.vue";
 import CustomCarousel from "../components/CustomCarousel.vue";
 import SearchAndPagination from "../components/SearchAndPagination.vue";
 </script>

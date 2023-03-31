@@ -1,15 +1,14 @@
 <script setup>
 import axios from "axios";
 import CardTop100 from "@/components/CardTop100.vue";
+import MusicPlayer from "@/components/MusicPlayer.vue";
 import { ref, toRefs, onMounted } from "vue";
 
 const props = defineProps({ data: Object });
 const { data } = toRefs(props);
 let top100Tracks = ref([]);
-
-// fetch data from API or use a static array
 const top100 = [
-  // data here
+
 ];
 const searchTerm = ref("");
 let currentPage = ref(0);
@@ -64,12 +63,6 @@ onMounted(() => {
       </div>
       <div class="flex justify-between items-center mb-6">
         <div class="relative">
-          <!-- <input
-            v-model.trim="searchTerm"
-            type="text"
-            class="w-[280px] pl-10 pr-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-            placeholder="Rechercher"
-          /> -->
           <button
             v-if="searchTerm"
             @click="searchTerm = ''"
@@ -98,6 +91,7 @@ onMounted(() => {
         >
           <CardTop100 :track="track" />
         </div>
+        <MusicPlayer v-if="currentTrack" :source="currentTrack.source" :isPlaying="isPlaying" />
       </div>
     </div>
   </div>

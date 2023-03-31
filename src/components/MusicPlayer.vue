@@ -14,8 +14,7 @@ import { useSongStore } from '../stores/song'
 import { storeToRefs } from 'pinia';
 const useSong = useSongStore()
 const { isPlaying, audio, currentTrack, currentArtist, trackTime, isLyrics, currentVolume } = storeToRefs(useSong)
-
-console.log(currentTrack.value)
+const isShowPlayer = ref(true)
 let randColor = ref('')
 randColor.value = uniqolor.random()
 let isHover = ref(false)
@@ -91,6 +90,11 @@ watch(() => currentTrack.value.id, (val) => {
     return
   }
   isLyrics.value = false
+})
+watch(isPlaying, (value) => {
+  setTimeout(() => {
+    isShowPlayer.value = value
+  }, 200)
 })
 
 </script>
