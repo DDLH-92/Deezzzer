@@ -121,7 +121,7 @@ watch(isPlaying, (value) => {
           @click="useSong.prevSong(currentTrack)">
           <SkipBackward :fillColor="currentTrack.id === 1 ? '#747474' : '#FFFFFF'" :size="25" />
         </button>
-        <button type="button" class="p-2 w-[8] rounded-full hover:bg-green-500"
+        <button type="button" class="p-2 rounded-full hover:bg-[#45e811]"
           @click="useSong.playOrPauseThisSong(currentArtist, currentTrack)">
           <Play v-if="!isPlaying" fillColor="#FFFFFF" :size="45" />
           <Pause v-else fillColor="#FFFFFF" :size="45" />

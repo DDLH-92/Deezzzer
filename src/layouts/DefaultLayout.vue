@@ -24,7 +24,7 @@ const logout = () => {
       <input
         v-model.trim="searchTerm"
         type="text"
-        class="w-[280px] pl-10 pr-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-[#121216] text-white placeholder-green-500"
+        class="w-[280px] pl-10 pr-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-[#121216] text-white placeholder:text-[#45e811]"
         placeholder="Rechercher"
       />
       <button

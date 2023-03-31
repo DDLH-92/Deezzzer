@@ -51,7 +51,7 @@ export default {
           class="border border-gray-400 p-2 rounded-lg w-80 placeholder-black background-white" />
       </div>
       <button @click.prevent="login"
-        class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-300 hover:bg-green-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+        class="border border-green-500 text-green-500 font-semibold py-2 px-4 rounded-lg w-full transition-colors duration-300 hover:bg-green-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
         Se connecter
       </button>
     </form>

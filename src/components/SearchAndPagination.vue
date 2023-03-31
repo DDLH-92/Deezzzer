@@ -19,6 +19,7 @@ const setPage = (page) => {
 
 const getData = async () => {
   const apiEndpoint = `http://localhost:3000/top10?index=${currentPage.value}`;
+
   axios
     .get(apiEndpoint)
     .then((response) => {

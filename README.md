@@ -25,7 +25,6 @@ Start the application:
 arduino
 Copy code
 npm run dev
-Open your preferred browser and navigate to http://localhost:3000
 
 Dependencies used
 Vue.js 3 - Progressive JavaScript framework
