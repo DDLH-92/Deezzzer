@@ -31,6 +31,13 @@ onMounted(() => {
       loadmetadata()
     }, 300)
   }
+
+  if (seeker.value) {
+  seeker.value.addEventListener("change", function () {
+    const time = audio.value.duration * (seeker.value.value / 100);
+    audio.value.currentTime = time;
+  });
+
   if (currentTrack.value) {
     seeker.value.addEventListener("change", function () {
       const time = audio.value.duration * (seeker.value.value / 100);
