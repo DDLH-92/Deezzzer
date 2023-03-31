@@ -13,10 +13,7 @@ export default {
 
     const login = async () => {
       try {
-        if (
-          state.email === "tim@tim.ch" &&
-          state.password === "M07 D3 P4553"
-        ) {
+        if (state.email === "tim@tim.ch" && state.password === "M07 D3 P4553") {
           localStorage.setItem("isAuthenticated", "true");
           router.push("/home");
         } else {
@@ -27,7 +24,6 @@ export default {
         state.error = "Une erreur est survenue lors de la connexion";
       }
     };
-
     return {
       state,
       login,

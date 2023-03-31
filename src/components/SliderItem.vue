@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import Play from "vue-material-design-icons/Play.vue";
-import { useSongStore } from "../stores/song";
+import { useSongStore } from "@/stores/song";
+
 let isHover = ref(false);
 const props = defineProps({ slide: Object });
 const useSong = useSongStore();
@@ -9,19 +10,12 @@ const useSong = useSongStore();
 
 <template>
   <div class="pl-8">
-    <div
-      class="relative"
-      @mouseenter="isHover = true"
-      @mouseleave="isHover = false"
-    >
-      <div
-        :class="
-          isHover
-            ? 'transition ease-in duration-150 bg-opacity-30'
-            : 'transition ease-out duration-150 bg-opacity-5'
-        "
-        class="absolute w-full h-full bg-black z-10 rounded-md"
-      />
+    <div class="relative" @mouseenter="isHover = true" @mouseleave="isHover = false">
+      <div :class="
+        isHover
+          ? 'transition ease-in duration-150 bg-opacity-30'
+          : 'transition ease-out duration-150 bg-opacity-5'
+      " class="absolute w-full h-full bg-black z-10 rounded-md" />
       <div class="absolute z-50 bottom-3 left-3 rounded-full bg-white p-1.5">
         <Play :size="27" @click="useSong.loadSong(slide)" />
       </div>

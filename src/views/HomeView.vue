@@ -1,6 +1,6 @@
 <script setup>
-import CustomCarousel from "../components/CustomCarousel.vue";
-import SearchAndPagination from "../components/SearchAndPagination.vue";
+import CustomCarousel from "@/components/CustomCarousel.vue";
+import SearchAndPagination from "@/components/SearchAndPagination.vue";
 </script>
 
 <template v-if="isLoading">

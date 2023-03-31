@@ -7,11 +7,10 @@ import SkipBackward from 'vue-material-design-icons/SkipBackward.vue';
 import SkipForward from 'vue-material-design-icons/SkipForward.vue';
 import VolumeHigh from 'vue-material-design-icons/VolumeHigh.vue';
 import VolumeMute from 'vue-material-design-icons/VolumeMute.vue';
-
 import uniqolor from 'uniqolor';
-
-import { useSongStore } from '../stores/song'
+import { useSongStore } from '@/stores/song'
 import { storeToRefs } from 'pinia';
+
 const useSong = useSongStore()
 const { isPlaying, audio, currentTrack, currentArtist, trackTime, isLyrics, currentVolume } = storeToRefs(useSong)
 const isShowPlayer = ref(true)
@@ -32,7 +31,6 @@ onMounted(() => {
       loadmetadata()
     }, 300)
   }
-  console.log({ currentTrack })
   if (currentTrack.value) {
     seeker.value.addEventListener("change", function () {
       const time = audio.value.duration * (seeker.value.value / 100);
@@ -100,20 +98,8 @@ watch(isPlaying, (value) => {
 </script>
 
 <template>
-  <div id="MusicPlayer" v-if="audio" class="
-                fixed
-                flex
-                min-w-[1000px]
-                items-center
-                justify-between
-                bottom-0
-                w-full
-                z-50
-                h-[62px]
-                bg-[#23232D]
-                border-t
-                border-t-[#383838]
-            ">
+  <div id="MusicPlayer" v-if="audio"
+    class="fixed flex min-w-[1000px] items-center justify-between bottom-0 w-full z-50 h-[62px] bg-[#23232D] border-t border-t-[#383838]">
     <div class="flex items-center w-2/12">
       <div class="flex items-center justify-center h-[30px] pl-4">
         <button type="button" :disabled="currentTrack.id === 1"
@@ -149,20 +135,20 @@ watch(isPlaying, (value) => {
         <div ref="seekerContainer" class="w-full relative mt-2 mb-3" @mouseenter="isHover = true"
           @mouseleave="isHover = false">
           <input v-model="range" ref="seeker" type="range" class="
-                                absolute
-                                rounded-full
-                                my-[7px]
-                                w-full
-                                h-0
-                                z-40
-                                appearance-none
-                                bg-opacity-100
-                                focus:outline-none
-                                cursor-pointer
-                            " :class="
-                              { 'rangeDotHidden': !isHover, 'rangeDot': isHover }
+                                  absolute
+                                  rounded-full
+                                  my-[7px]
+                                  w-full
+                                  h-0
+                                  z-40
+                                  appearance-none
+                                  bg-opacity-100
+                                  focus:outline-none
+                                  cursor-pointer
+                              " :class="
+                                { 'rangeDotHidden': !isHover, 'rangeDot': isHover }
 
-                            ">
+                              ">
           <div class="pointer-events-none rounded-full absolute z-10 inset-y-0 left-0 w-0"
             :style="`width: ${range}%; background-color: ${randColor.color}`"
             :class="isHover ? 'h-[4px] mt-[5px]' : 'h-[2px] mt-[6px]'">
