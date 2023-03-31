@@ -1,6 +1,6 @@
 # Dizzzer
 
-Welcome to Dizzzer, a music application that uses the Deezer API to allow you to discover the top 10 and top 100 songs. You can listen to music using the integrated music player.
+Welcome to Dizzzer, a music application that uses the Deezer API to allow you to listen the top 10 and discover top 100 songs. You can listen to Top10 music using the integrated music player.
 
 ## How to use Dizzzer 
 
