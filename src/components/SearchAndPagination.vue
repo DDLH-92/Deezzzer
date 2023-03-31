@@ -67,11 +67,6 @@ onMounted(() => {
         >
           <CardTop100 :track="track" />
         </div>
-        <MusicPlayer
-          v-if="currentTrack"
-          :source="currentTrack.source"
-          :isPlaying="isPlaying"
-        />
       </div>
     </div>
   </div>
