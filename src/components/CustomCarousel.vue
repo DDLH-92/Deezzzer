@@ -28,73 +28,52 @@ const slideTo = (val) => {
       currentSlide.value = 0;
     }
   }
-  }
+}
 
-  const getData = async () => {
-    const apiEndpoint = `http://localhost:3000/top10`;
-    axios
-      .get(apiEndpoint)
-      .then((response) => {
-        if (response.headers["content-type"].includes("application/json")) {
-          top10Tracks.value = response.data.data;
-        } else {
-          console.error("Response is not JSON");
-        }
-      })
-      .catch((e) => {
-        console.log("error", e);
-        isLoading = false;
-      });
-  };
+const getData = async () => {
+  const apiEndpoint = `http://localhost:3000/top10`;
+  axios
+    .get(apiEndpoint)
+    .then((response) => {
+      if (response.headers["content-type"].includes("application/json")) {
+        top10Tracks.value = response.data.data;
+        console.log(top10Tracks.value)
+      } else {
+        console.error("Response is not JSON");
+      }
+    })
+    .catch((e) => {
+      console.log("error", e);
+      isLoading = false;
+    });
+};
 
-  onMounted(() => {
-    getData();
-  });
+onMounted(() => {
+  getData();
+});
 
 </script>
 <template>
   <div v-if="!isFetching">
     <div class="flex justify-between pb-5 ml-8 mr-6">
-      <RouterLink
-        to="/artist"
-        @mouseenter="isHoverCategory = true"
-        @mouseleave="isHoverCategory = false"
+      <RouterLink to="/artist" @mouseenter="isHoverCategory = true" @mouseleave="isHoverCategory = false"
         :class="isHoverCategory ? 'hover:text-[#EF5465]' : 'text-white'"
-        class="flex items-center font-semibold text-xl cursor-pointer"
-      >
+        class="flex items-center font-semibold text-xl cursor-pointer">
       </RouterLink>
-
       <div class="flex items-center">
-        <button
-          @click="slideTo(false)"
-          class="rounded-full p-2 hover:bg-[#2b2b2b]"
-        >
+        <button @click="slideTo(false)" class="rounded-full p-2 hover:bg-[#2b2b2b]">
           <ChevronLeft fillColor="#45e811" :size="30" />
         </button>
         <div class="px-2"></div>
-        <button
-          @click="slideTo(true)"
-          class="rounded-full p-2 hover:bg-[#2b2b2b]"
-        >
+        <button @click="slideTo(true)" class="rounded-full p-2 hover:bg-[#2b2b2b]">
           <ChevronRight fillColor="#45e811" :size="30" />
         </button>
       </div>
     </div>
 
-    <Carousel
-      class="mr-8"
-      ref="carousel"
-      v-model="currentSlide"
-      :items-to-show="4"
-      :items-to-scroll="4"
-      :transition="800"
-      snapAlign="start"
-    >
-      <Slide
-        v-for="slide in top10Tracks"
-        :key="slide.id"
-        class="flex items-baseline"
-      >
+    <Carousel class="mr-8" ref="carousel" v-model="currentSlide" :items-to-show="4" :items-to-scroll="4" :transition="800"
+      snapAlign="start">
+      <Slide v-for="slide in top10Tracks" :key="slide.id" class="flex items-baseline">
         <SliderItem :slide="slide" />
       </Slide>
     </Carousel>
