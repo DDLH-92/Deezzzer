@@ -19,6 +19,8 @@ node proxy.js
 5. Start the application:
 npm run dev
 
+5. Login on the application: E-mail: tim@tim.ch / Password: M07 D3 P4553
+
 
 ## Dependencies used
 
