@@ -36,7 +36,7 @@ const logout = () => {
   </div>
   <div id="SideNav" class="fixed w-[200px] h-[100vh] border-r border-r-[#32323D]">
     <div class="flex items-center w-full my-[20px]">
-      <img src="public/images/Logo-dizzzer.png" alt="Logo" />
+      <img src="/images/Logo-dizzzer.png" alt="Logo" />
     </div>
     <div class="w-full pl-6 pt-3 cursor-pointer relative">
       <div class="absolute bottom-0 left-0 right-0 text-center mb-3"></div>
