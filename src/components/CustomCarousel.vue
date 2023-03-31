@@ -37,7 +37,6 @@ const getData = async () => {
     .then((response) => {
       if (response.headers["content-type"].includes("application/json")) {
         top10Tracks.value = response.data.data;
-        console.log(top10Tracks.value)
       } else {
         console.error("Response is not JSON");
       }
