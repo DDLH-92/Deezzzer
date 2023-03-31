@@ -24,6 +24,7 @@ let seeker = ref(null)
 let seekerContainer = ref(null)
 let range = ref(0)
 
+document.addEventListener('DOMContentLoaded', function() {
 onMounted(() => {
   if (audio.value) {
     setTimeout(() => {
@@ -31,7 +32,8 @@ onMounted(() => {
       loadmetadata()
     }, 300)
   }
-  if (currentTrack.value) {
+  if (currentTrack.value && audio.value) {
+  if (seeker.value) {
     seeker.value.addEventListener("change", function () {
       const time = audio.value.duration * (seeker.value.value / 100);
       audio.value.currentTime = time;
@@ -44,6 +46,8 @@ onMounted(() => {
       audio.value.play();
       isPlaying.value = true
     });
+  }
+  if (seekerContainer.value) {
     seekerContainer.value.addEventListener("click", function (e) {
       const clickPosition = (e.pageX - seekerContainer.value.offsetLeft) / seekerContainer.value.offsetWidth;
       const time = audio.value.duration * clickPosition;
@@ -51,26 +55,38 @@ onMounted(() => {
       seeker.value.value = (100 / audio.value.duration) * audio.value.currentTime;
     });
   }
-})
+}
+});
 
 const timeupdate = () => {
-  audio.value.addEventListener("timeupdate", function () {
-    var minutes = Math.floor(audio.value.currentTime / 60);
-    var seconds = Math.floor(audio.value.currentTime - minutes * 60);
-    isTrackTimeCurrent.value = minutes + ':' + seconds.toString().padStart(2, '0')
-    trackTime.value = isTrackTimeCurrent.value
-    const value = (100 / audio.value.duration) * audio.value.currentTime;
-    range.value = value
-    seeker.value.value = value;
-  });
+  watch(() => {
+    if (audio.value) {
+      audio.value.addEventListener("timeupdate", function () {
+        if (!audio.value) return;
+        var minutes = Math.floor(audio.value.currentTime / 60);
+        var seconds = Math.floor(audio.value.currentTime - minutes * 60);
+        isTrackTimeCurrent.value = minutes + ':' + seconds.toString().padStart(2, '0')
+        trackTime.value = isTrackTimeCurrent.value
+        const value = (100 / audio.value.duration) * audio.value.currentTime;
+        range.value = value
+        if (seeker.value) seeker.value.value = value;
+      });
+    }
+  })
 }
+
 const loadmetadata = () => {
-  audio.value.addEventListener('loadedmetadata', function () {
-    const duration = audio.value.duration;
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration % 60);
-    isTrackTimeTotal.value = minutes + ':' + seconds.toString().padStart(2, '0')
-  });
+  watch(() => {
+    if (audio.value) {
+      audio.value.addEventListener('loadedmetadata', function () {
+        if (!audio.value) return;
+        const duration = audio.value.duration;
+        const minutes = Math.floor(duration / 60);
+        const seconds = Math.floor(duration % 60);
+        isTrackTimeTotal.value = minutes + ':' + seconds.toString().padStart(2, '0')
+      });
+    }
+  })
 }
 watch(() => audio.value, () => {
   timeupdate()
@@ -94,6 +110,7 @@ watch(isPlaying, (value) => {
     isShowPlayer.value = value
   }, 200)
 })
+});
 
 </script>
 
