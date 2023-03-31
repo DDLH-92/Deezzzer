@@ -9,7 +9,7 @@ import SearchAndPagination from "../components/SearchAndPagination.vue";
       <div class="text-white text-xl font-semibold inline-block">
         TOP 10
         <div class="text-sm font-light text-[#A2A2AD]">
-          Découvrez les titres les plus populaires du moment !
+          Ecoutez les titres les plus populaires du moment !
         </div>
       </div>
       <CustomCarousel />
@@ -17,7 +17,7 @@ import SearchAndPagination from "../components/SearchAndPagination.vue";
       <div class="text-white text-xl font-semibold inline-block">
         TOP 100
         <div class="text-sm font-light text-[#A2A2AD]">
-          Les 100 titres les plus populaires .
+          Découvrez les 100 titres les plus populaires.
         </div>
       </div>
       <div class="grid gap-4">

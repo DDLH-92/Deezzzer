@@ -18,7 +18,7 @@ const logout = () => {
 <template>
   <div
     id="TopNav"
-    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[50px] border-b border-b-[#32323D]"
+    class="fixed right-0 flex items-center justify-between w-[calc(100%-240px)] h-[56px] border-b border-b-[#32323D]"
   >
     <div>
       <input
