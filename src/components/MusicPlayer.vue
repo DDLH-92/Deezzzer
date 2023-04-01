@@ -24,92 +24,92 @@ let seeker = ref(null)
 let seekerContainer = ref(null)
 let range = ref(0)
 
-document.addEventListener('DOMContentLoaded', function() {
-onMounted(() => {
-  if (audio.value) {
+document.addEventListener('DOMContentLoaded', function () {
+  onMounted(() => {
+    if (audio.value) {
+      setTimeout(() => {
+        timeupdate()
+        loadmetadata()
+      }, 300)
+    }
+    if (currentTrack.value && audio.value) {
+      if (seeker.value) {
+        seeker.value.addEventListener("change", function () {
+          const time = audio.value.duration * (seeker.value.value / 100);
+          audio.value.currentTime = time;
+        });
+        seeker.value.addEventListener("mousedown", function () {
+          audio.value.pause();
+          isPlaying.value = false
+        });
+        seeker.value.addEventListener("mouseup", function () {
+          audio.value.play();
+          isPlaying.value = true
+        });
+      }
+      if (seekerContainer.value) {
+        seekerContainer.value.addEventListener("click", function (e) {
+          const clickPosition = (e.pageX - seekerContainer.value.offsetLeft) / seekerContainer.value.offsetWidth;
+          const time = audio.value.duration * clickPosition;
+          audio.value.currentTime = time;
+          seeker.value.value = (100 / audio.value.duration) * audio.value.currentTime;
+        });
+      }
+    }
+  });
+
+  const timeupdate = () => {
+    watch(() => {
+      if (audio.value) {
+        audio.value.addEventListener("timeupdate", function () {
+          if (!audio.value) return;
+          var minutes = Math.floor(audio.value.currentTime / 60);
+          var seconds = Math.floor(audio.value.currentTime - minutes * 60);
+          isTrackTimeCurrent.value = minutes + ':' + seconds.toString().padStart(2, '0')
+          trackTime.value = isTrackTimeCurrent.value
+          const value = (100 / audio.value.duration) * audio.value.currentTime;
+          range.value = value
+          if (seeker.value) seeker.value.value = value;
+        });
+      }
+    })
+  }
+
+  const loadmetadata = () => {
+    watch(() => {
+      if (audio.value) {
+        audio.value.addEventListener('loadedmetadata', function () {
+          if (!audio.value) return;
+          const duration = audio.value.duration;
+          const minutes = Math.floor(duration / 60);
+          const seconds = Math.floor(duration % 60);
+          isTrackTimeTotal.value = minutes + ':' + seconds.toString().padStart(2, '0')
+        });
+      }
+    })
+  }
+  watch(() => audio.value, () => {
+    timeupdate()
+    loadmetadata()
+  })
+  watch(() => isTrackTimeCurrent.value, (time) => {
+    if (time && time == isTrackTimeTotal.value) {
+      useSong.nextSong(currentTrack.value)
+    }
+  })
+  watch(() => currentTrack.value.id, (val) => {
+    randColor.value = uniqolor.random()
+    if (currentTrack.value.lyrics) {
+      isLyrics.value = true
+      return
+    }
+    isLyrics.value = false
+  })
+  watch(isPlaying, (value) => {
     setTimeout(() => {
-      timeupdate()
-      loadmetadata()
-    }, 300)
-  }
-  if (currentTrack.value && audio.value) {
-  if (seeker.value) {
-    seeker.value.addEventListener("change", function () {
-      const time = audio.value.duration * (seeker.value.value / 100);
-      audio.value.currentTime = time;
-    });
-    seeker.value.addEventListener("mousedown", function () {
-      audio.value.pause();
-      isPlaying.value = false
-    });
-    seeker.value.addEventListener("mouseup", function () {
-      audio.value.play();
-      isPlaying.value = true
-    });
-  }
-  if (seekerContainer.value) {
-    seekerContainer.value.addEventListener("click", function (e) {
-      const clickPosition = (e.pageX - seekerContainer.value.offsetLeft) / seekerContainer.value.offsetWidth;
-      const time = audio.value.duration * clickPosition;
-      audio.value.currentTime = time;
-      seeker.value.value = (100 / audio.value.duration) * audio.value.currentTime;
-    });
-  }
-}
-});
-
-const timeupdate = () => {
-  watch(() => {
-    if (audio.value) {
-      audio.value.addEventListener("timeupdate", function () {
-        if (!audio.value) return;
-        var minutes = Math.floor(audio.value.currentTime / 60);
-        var seconds = Math.floor(audio.value.currentTime - minutes * 60);
-        isTrackTimeCurrent.value = minutes + ':' + seconds.toString().padStart(2, '0')
-        trackTime.value = isTrackTimeCurrent.value
-        const value = (100 / audio.value.duration) * audio.value.currentTime;
-        range.value = value
-        if (seeker.value) seeker.value.value = value;
-      });
-    }
+      isShowPlayer.value = value
+    }, 200)
   })
-}
-
-const loadmetadata = () => {
-  watch(() => {
-    if (audio.value) {
-      audio.value.addEventListener('loadedmetadata', function () {
-        if (!audio.value) return;
-        const duration = audio.value.duration;
-        const minutes = Math.floor(duration / 60);
-        const seconds = Math.floor(duration % 60);
-        isTrackTimeTotal.value = minutes + ':' + seconds.toString().padStart(2, '0')
-      });
-    }
-  })
-}
-watch(() => audio.value, () => {
-  timeupdate()
-  loadmetadata()
-})
-watch(() => isTrackTimeCurrent.value, (time) => {
-  if (time && time == isTrackTimeTotal.value) {
-    useSong.nextSong(currentTrack.value)
-  }
-})
-watch(() => currentTrack.value.id, (val) => {
-  randColor.value = uniqolor.random()
-  if (currentTrack.value.lyrics) {
-    isLyrics.value = true
-    return
-  }
-  isLyrics.value = false
-})
-watch(isPlaying, (value) => {
-  setTimeout(() => {
-    isShowPlayer.value = value
-  }, 200)
-})
 });
 
 </script>
@@ -152,20 +152,20 @@ watch(isPlaying, (value) => {
         <div ref="seekerContainer" class="w-full relative mt-2 mb-3" @mouseenter="isHover = true"
           @mouseleave="isHover = false">
           <input v-model="range" ref="seeker" type="range" class="
-                                  absolute
-                                  rounded-full
-                                  my-[7px]
-                                  w-full
-                                  h-0
-                                  z-40
-                                  appearance-none
-                                  bg-opacity-100
-                                  focus:outline-none
-                                  cursor-pointer
-                              " :class="
-                                { 'rangeDotHidden': !isHover, 'rangeDot': isHover }
+                                    absolute
+                                    rounded-full
+                                    my-[7px]
+                                    w-full
+                                    h-0
+                                    z-40
+                                    appearance-none
+                                    bg-opacity-100
+                                    focus:outline-none
+                                    cursor-pointer
+                                " :class="
+                                  { 'rangeDotHidden': !isHover, 'rangeDot': isHover }
 
-                              ">
+                                ">
           <div class="pointer-events-none rounded-full absolute z-10 inset-y-0 left-0 w-0"
             :style="`width: ${range}%; background-color: ${randColor.color}`"
             :class="isHover ? 'h-[4px] mt-[5px]' : 'h-[2px] mt-[6px]'">
