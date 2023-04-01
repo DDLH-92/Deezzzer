@@ -57,7 +57,7 @@ onMounted(() => {
   }
 }
 });
-
+});
 const timeupdate = () => {
   watch(() => {
     if (audio.value) {
@@ -110,7 +110,7 @@ watch(isPlaying, (value) => {
     isShowPlayer.value = value
   }, 200)
 })
-});
+
 
 </script>
 
